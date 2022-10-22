@@ -1,0 +1,27 @@
+{
+  "configurations" : [
+    {
+      "id" : "5D4440D8-CB52-422A-9577-2B4EC6F5E95F",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "BaseUITest"
+      ],
+      "target" : {
+        "containerPath" : "container:Sandbox.xcodeproj",
+        "identifier" : "AC7AF7F529036A5800E1D23E",
+        "name" : "SandboxUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
