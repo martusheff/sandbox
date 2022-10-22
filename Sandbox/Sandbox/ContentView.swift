@@ -13,11 +13,17 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            NavigationLink(destination: CounterView()) {
-                Text("Counter")
+            List {
+                NavigationLink(destination: CounterView()) {
+                    Text("Counter")
+                }
+                .accessibilityIdentifier("DashboardCounterLink")
+                NavigationLink(destination: AccountView()) {
+                    Text("Account")
+                }
+                .accessibilityIdentifier("DashboardAccountLink")
             }
             .buttonStyle(.bordered)
-            .accessibilityIdentifier("DashboardCounterLink")
             .navigationTitle("Sandbox")
         }
         

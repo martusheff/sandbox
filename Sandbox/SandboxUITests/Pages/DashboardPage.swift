@@ -10,11 +10,16 @@ import XCTest
 
 class DashboardPage: BasePage {
     private lazy var btnCounter = app.buttons["DashboardCounterLink"].firstMatch
+    private lazy var btnAccount = app.buttons["DashboardAccountLink"].firstMatch
     private lazy var txtPageTitle = app.staticTexts["Sandbox"].firstMatch
     
     
     func tapCounter() {
         btnCounter.tap()
+    }
+    
+    func tapAccount() {
+        btnAccount.tap()
     }
     
     @discardableResult
