@@ -42,9 +42,6 @@ struct AccountView: View {
                             .accessibilityIdentifier("AccountView-\(account.email)")
                     }
                     .onDelete(perform: viewModel.deleteRow)
-                    .onAppear {
-                        totalAccounts = viewModel.numAccounts
-                    }
                 } else if !viewModel.accounts.isEmpty {
                     ForEach(viewModel.accounts, id: \.id) { account in
                         if account.email.contains(searchField) {
@@ -61,54 +58,69 @@ struct AccountView: View {
             .padding(.top, -25)
             .accessibilityIdentifier("AccountList")
             
-            VStack {
-                HStack {
-                    TextField("Prefix", text: $emailPrefix)
-                        .textFieldStyle(.roundedBorder)
-                        .multilineTextAlignment(.center)
-                        .accessibilityIdentifier("AccountPrefixTextField")
-                    TextField("Domain", text: $emailDomain)
-                        .textFieldStyle(.roundedBorder)
-                        .multilineTextAlignment(.center)
-                        .accessibilityIdentifier("AccountDomainTextField")
-                }
-                .padding(.horizontal, 25)
-                HStack {
-                    Spacer()
-                    TextField("Quantity", text: $accountsToCreate)
-                        .keyboardType(.numberPad)
-                        .textFieldStyle(.roundedBorder)
-                        .frame(width: 50)
-                        .multilineTextAlignment(.center)
-                        .accessibilityIdentifier("AccountQuantityTextField")
-                    Button {
-                        
+            
+            ZStack {
+                VStack(spacing: 15) {
+                    HStack {
+                        VStack {
+                            TextField("Quantity", text: $accountsToCreate)
+                                .keyboardType(.numberPad)
+                                .textFieldStyle(.roundedBorder)
+                                .multilineTextAlignment(.center)
+                                .accessibilityIdentifier("AccountQuantityTextField")
+                        }
+                        TextField("Prefix", text: $emailPrefix)
+                            .textFieldStyle(.roundedBorder)
+                            .multilineTextAlignment(.center)
+                            .accessibilityIdentifier("AccountPrefixTextField")
+                        TextField("Domain", text: $emailDomain)
+                            .textFieldStyle(.roundedBorder)
+                            .multilineTextAlignment(.center)
+                            .accessibilityIdentifier("AccountDomainTextField")
+                    }
+                    .padding(.horizontal, 25)
+                    HStack {
+                        Spacer()
+                        Button {
+                            viewModel.createAccount(quantity: accountsToCreate, emailPrefix: emailPrefix, domain: emailDomain)
+                            accountsToCreate = ""
                             if searchField.isEmpty {
                                 totalAccounts = viewModel.numAccounts
                             } else {
                                 totalAccounts = viewModel.accounts.filter({ $0.email.contains(searchField)}).count
                             }
-                        viewModel.createAccount(quantity: accountsToCreate, emailPrefix: emailPrefix, domain: emailDomain)
-                        accountsToCreate = ""
-                    } label: {
-                        Text("Create Account")
-                            .accessibilityIdentifier("AccountCreateButtonLabel")
-                    }
-                    .buttonStyle(.bordered)
-                    .accessibilityIdentifier("AccountCreateButton")
-                    Button {
-                        emailPrefix = ""
-                        emailDomain = ""
-                        viewModel.clear()
-                        totalAccounts = viewModel.numAccounts
-                    } label: {
-                        Text("Clear")
-                    }
-                    .buttonStyle(.bordered)
-                    .accessibilityIdentifier("AccountClearButton")
-                    Spacer()
-                }
-            }
+                        } label: {
+                            Text("Create Account")
+                                .accessibilityIdentifier("AccountCreateButtonLabel")
+                        }
+                        .buttonStyle(.bordered)
+                        .accessibilityIdentifier("AccountCreateButton")
+                        Button {
+                            emailPrefix = ""
+                            emailDomain = ""
+                            viewModel.clear()
+                            totalAccounts = viewModel.numAccounts
+                        } label: {
+                            Text("Clear")
+                        }
+                        .buttonStyle(.bordered)
+                        .accessibilityIdentifier("AccountClearButton")
+                        Spacer()
+                    } // HSTACK
+                    
+                    
+                }// VSTACK
+
+                .zIndex(2)
+                RoundedRectangle(cornerRadius: 40, style: .continuous)
+                    .ignoresSafeArea()
+                    .frame(width: UIScreen.main.bounds.width + 20, height: UIScreen.main.bounds.height / 10)
+                    
+                    .zIndex(1)
+                    .foregroundColor(.white)
+                    .offset(y: -25)
+            }//ZSTACK
+            
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -121,10 +133,9 @@ struct AccountView: View {
                             .accessibilityIdentifier("AccountCountLabel")
                             .padding(.horizontal, 15)
                             .padding(.bottom, -5)
+                            
                     }
             }
-            
-            
         }
         .navigationBarTitleDisplayMode(.inline)
     }
