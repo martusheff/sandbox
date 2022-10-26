@@ -29,7 +29,9 @@ struct AccountView: View {
                     Text("Create an account to continue...")
                 }
             }
+            .padding(.top, -25)
             .accessibilityIdentifier("AccountList")
+            
             VStack {
                 HStack {
                     TextField("Prefix", text: $emailPrefix)
@@ -72,7 +74,23 @@ struct AccountView: View {
                 }
             }
         }
-        .navigationTitle("Account")
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                    HStack {
+                        Text("Accounts")
+                            .font(.title)
+                            .fontWeight(.bold)
+                        Spacer()
+                        Text("\(viewModel.numAccounts)")
+                            .accessibilityIdentifier("AccountCountLabel")
+                            .padding(.horizontal, 15)
+                            .padding(.bottom, -5)
+                    }
+            }
+            
+            
+        }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

@@ -14,6 +14,7 @@ class AccountPage: BasePage {
     private lazy var txtFldPrefix = app.textFields["AccountPrefixTextField"].firstMatch
     private lazy var txtFldDomain = app.textFields["AccountDomainTextField"].firstMatch
     private lazy var txtFldQuantity = app.textFields["AccountQuantityTextField"].firstMatch
+    private lazy var txtCount = app.staticTexts["AccountCountLabel"].firstMatch
     private lazy var txtCreateAccount = app.staticTexts["AccountCreateButtonLabel"].firstMatch
     private lazy var btnCreateAccount = app.buttons["AccountCreateButton"].firstMatch
     private lazy var btnClear = app.buttons["AccountClearButton"].firstMatch
@@ -25,6 +26,16 @@ class AccountPage: BasePage {
     @discardableResult
     func verifyIsCurrentPage() -> Self {
         XCTAssert(lstAccount.exists, "Failed to load Account page.")
+        return self
+    }
+    
+    @discardableResult
+    func verifyCount(is expectedCount: Int) -> Self {
+        guard let actualCount = Int(txtCount.label) else {
+            XCTFail("Unable to parse Int from text count label '\(txtCount.label)'.")
+            return self
+        }
+        XCTAssertEqual(expectedCount, actualCount, "Nav bar count is inccorect.")
         return self
     }
     

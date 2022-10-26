@@ -10,6 +10,8 @@ import Foundation
 class AccountViewModel: ObservableObject {
     @Published var accounts: [AccountModel] = []
     
+    var numAccounts: Int { accounts.count }
+    
     func createAccount(quantity: String, emailPrefix: String, domain: String) {
         let prefixToUse = emailPrefix.isEmpty ? "SandboxTest" : emailPrefix
         let domainToUse = domain.isEmpty ? "email" : domain
@@ -21,6 +23,7 @@ class AccountViewModel: ObservableObject {
             accounts.append(newAccount)
         }
     }
+    
     
     func clear() {
         accounts = []

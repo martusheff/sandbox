@@ -29,9 +29,11 @@ class AccountUITests: BaseUITest {
         AccountPage()
             .tapCreate()
             .verifyCellCount(is: 1)
+            .verifyCount(is: 1)
             .enterQuantity("5")
             .tapCreate()
             .verifyCellCount(is: 6)
+            .verifyCount(is: 6)
     }
     
     func testClearAccount() {
@@ -40,13 +42,17 @@ class AccountUITests: BaseUITest {
         AccountPage()
             .tapCreate()
             .verifyCellCount(is: 1)
+            .verifyCount(is: 1)
             .tapClear()
             .verifyCellCount(is: 1)
+            .verifyCount(is: 0)
             .enterQuantity("5")
             .tapCreate()
             .verifyCellCount(is: 5)
+            .verifyCount(is: 5)
             .tapClear()
             .verifyCellCount(is: 1)
+            .verifyCount(is: 0)
     }
     
     func testOpenAccountEditPage() {
