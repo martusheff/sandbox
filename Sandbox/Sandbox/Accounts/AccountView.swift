@@ -19,6 +19,8 @@ struct AccountView: View {
     var body: some View {
         
         //TODO: Debug nabar count on search.
+        //TODO: Add UI tests for search functionality.
+        //TODO: ADD UnitTests for View Model functions.
         
         VStack {
             if viewModel.numAccounts > 0 {
