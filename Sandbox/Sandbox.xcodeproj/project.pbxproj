@@ -28,6 +28,7 @@
 		AC7AF7E729036A5800E1D23E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC7AF7E629036A5800E1D23E /* Preview Assets.xcassets */; };
 		AC7AF7F129036A5800E1D23E /* SandboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7AF7F029036A5800E1D23E /* SandboxTests.swift */; };
 		AC7AF80A29036F2800E1D23E /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7AF80929036F2800E1D23E /* CounterView.swift */; };
+		AC8AD6722908EFF700C453ED /* SearchFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8AD6712908EFF700C453ED /* SearchFieldView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		AC7AF7F029036A5800E1D23E /* SandboxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxTests.swift; sourceTree = "<group>"; };
 		AC7AF7F629036A5800E1D23E /* SandboxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SandboxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC7AF80929036F2800E1D23E /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CounterView.swift; path = Sandbox/Counter/CounterView.swift; sourceTree = SOURCE_ROOT; };
+		AC8AD6712908EFF700C453ED /* SearchFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				AC16C7EF2903C9C900629EAB /* AccountView.swift */,
+				AC8AD6712908EFF700C453ED /* SearchFieldView.swift */,
 				AC16C7F72903D69100629EAB /* AccountListItemView.swift */,
 				AC16C7F32903CA0100629EAB /* AccountModel.swift */,
 				AC16C7F929048C4D00629EAB /* AccountEditView.swift */,
@@ -366,6 +369,7 @@
 				AC16C7F22903C9DB00629EAB /* AccountViewModel.swift in Sources */,
 				AC16C7F02903C9C900629EAB /* AccountView.swift in Sources */,
 				AC16C7F82903D69100629EAB /* AccountListItemView.swift in Sources */,
+				AC8AD6722908EFF700C453ED /* SearchFieldView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

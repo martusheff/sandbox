@@ -18,7 +18,8 @@ struct ContentView: View {
                     Text("Counter")
                 }
                 .accessibilityIdentifier("DashboardCounterLink")
-                NavigationLink(destination: AccountView()) {
+                NavigationLink(destination: AccountView().environmentObject(AccountViewModel())
+                ) {
                     Text("Account")
                 }
                 .accessibilityIdentifier("DashboardAccountLink")
